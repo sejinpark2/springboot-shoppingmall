@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>쇼핑몰</title>
+    <style>
+        .button {
+          margin: 5px;
+          width: 150px;
+          height: 50px;
+        }
+
+        .member-group, .product-group, .order-group {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          height: 10vh;
+        }
+    </style>
+</head>
+<body>
+<h1>쇼핑몰</h1>
+
+<div class="member-group">
+    <button class="button" onclick="location.href='회원가입.html'">회원가입</button>
+    <button class="button" onclick="location.href='회원목록.html'">회원 목록</button>
+</div>
+
+<div class="product-group">
+    <button class="button" onclick="location.href='상품등록.html'">상품 등록</button>
+    <button class="button" onclick="location.href='상품목록.html'">상품 목록</button>
+</div>
+
+<div class="order-group">
+    <button class="button" onclick="location.href='상품주문.html'">상품 주문</button>
+    <button class="button" onclick="location.href='주문내역.html'">주문 내역</button>
+</div>
+</body>
+</html>
