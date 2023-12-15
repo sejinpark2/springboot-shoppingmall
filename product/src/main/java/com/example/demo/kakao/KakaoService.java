@@ -1,8 +1,6 @@
-package com.example.login_test.kakao;
+package com.example.demo.kakao;
 
-import com.example.login_test.user.User;
-import com.example.login_test.user.UserRepository;
-import com.example.login_test.user.UserRequest;
+import com.example.demo.user.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -127,7 +125,7 @@ public class KakaoService {
         String nickname = kakaoUserInfor.getNickname();
         String email = kakaoUserInfor.getEmail();
 
-        UserRequest.KakaoJoinDTO kakaoJoinDTO = new UserRequest.KakaoJoinDTO();
+        KakaoRequest.KakaoJoinDTO kakaoJoinDTO = new KakaoRequest.KakaoJoinDTO();
         kakaoJoinDTO.setUsername(nickname);
         kakaoJoinDTO.setEmail(email);
 

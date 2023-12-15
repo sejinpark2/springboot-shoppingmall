@@ -25,6 +25,7 @@ public class ProductController {
     @GetMapping("/products")
     public ResponseEntity<?> findAll(@RequestParam(defaultValue = "0") int page) {
         List<ProductResponse.FindAllDTO> productResonses = productService.findAll(page);
+
         ApiUtils.ApiResult<?> apiResult = ApiUtils.success(productResonses);
         return ResponseEntity.ok(apiResult);
     }

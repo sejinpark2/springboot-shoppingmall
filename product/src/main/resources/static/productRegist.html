@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>상품 등록</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>상품 등록</h1>
+<form id="product-form">
+    <label for="product-name">상품명:</label>
+    <input type="text" id="product-name" name="product-name" required><br><br>
+
+    <label for="product-description">상품설명:</label>
+    <textarea id="product-description" name="product-description" required></textarea><br><br>
+
+    <label for="product-price">상품가격:</label>
+    <input type="number" id="product-price" name="product-price" required><br><br>
+
+    <input type="button" id="submit-button" value="등록">
+</form>
+
+<script>
+    $(document).ready(function() {
+        $('#submit-button').click(function(e) {
+            e.preventDefault();
+
+            var productData = {
+                "productName": $('#product-name').val(),
+                "description": $('#product-description').val(),
+                "price": $('#product-price').val()
+            };
+
+            console.log(productData);
+
+            $.ajax({
+                url: '/products/save',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(productData),
+                success: function() {
+                    alert('상품이 등록되었습니다.');
+                    window.location.href = 'http://localhost:8080';
+                },
+                error: function() {
+                    alert('상품 등록에 실패했습니다.');
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
+

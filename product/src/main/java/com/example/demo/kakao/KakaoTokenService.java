@@ -1,5 +1,6 @@
-package com.example.login_test.kakao;
+package com.example.demo.kakao;
 
+import com.example.demo.kakao.KakaoApiResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;

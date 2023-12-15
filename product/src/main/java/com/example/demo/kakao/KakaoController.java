@@ -1,5 +1,6 @@
-package com.example.login_test.kakao;
+package com.example.demo.kakao;
 
+import com.example.demo.kakao.KakaoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

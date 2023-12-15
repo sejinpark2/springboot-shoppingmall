@@ -1,4 +1,4 @@
-package com.example.login_test.kakao;
+package com.example.demo.kakao;
 
 import lombok.Getter;
 
@@ -12,9 +12,9 @@ public class KakaoUserInforDto {
     //private final String profileImage;
 
     public KakaoUserInforDto(String nickname, String email) {
-            this.nickname = nickname;
-            this.email = email;
-            //this.profileImage = profileImage;
+        this.nickname = nickname;
+        this.email = email;
+        //this.profileImage = profileImage;
     }
 }
 
