@@ -1,10 +1,10 @@
 package com.example.demo.user;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Collections;
@@ -25,8 +25,6 @@ public class UserRequest {
         @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@#$%^&+=!~`<>,./?;:'\"\\[\\]{}\\\\()|_-])\\S*$", message = "영문, 숫자, 특수문자가 포함되어야하고 공백이 포함될 수 없습니다.")
         private String password;
 
-        private String username;
-
         @Pattern(regexp = "^[0-9]{10,11}$", message = "휴대폰 번호는 숫자 10~11자리만 가능합니다.")
         private String phoneNumber;
 
@@ -34,7 +32,6 @@ public class UserRequest {
             return User.builder()
                     .email(email)
                     .password(password)
-                    .username(username)
                     .phoneNumber(phoneNumber)
                     .roles(Collections.singletonList("ROLE_USER"))
                     .build();

@@ -33,7 +33,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
         String prefixJwt = request.getHeader(JwtTokenProvider.HEADER);
 
-        // ** 헤더가 없다면 더이상 이 메서드에서 할 일은 없음. 다음으로 넘김.
+        // ** 헤더가 없다면 더이상 이 메서드에서   할 일은 없음. 다음으로 넘김.
         if(prefixJwt == null) {
             chain.doFilter(request, response);
             return;
@@ -85,7 +85,6 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
         }
     }
 }
-
 
 
 

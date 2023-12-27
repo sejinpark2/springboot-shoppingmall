@@ -47,8 +47,7 @@ public class ApiUtils {
         }
     }
 
-    @AllArgsConstructor
-    @Getter
+    @AllArgsConstructor @Getter
     public static class ApiError{
         private final String message;
         private final int status;
