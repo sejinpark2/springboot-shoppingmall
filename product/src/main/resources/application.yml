@@ -24,18 +24,19 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create
+    properties:
+      hibernate:
+        hbm2ddl:
+          import_files: classpath:db/data.sql
+        format_sql: true
+      default_batch_fetch_size: 100
+      output:
+        ansi:
+          enabled: always
   h2:
     console:
       enabled: true
   output:
     ansi:
       enabled: ALWAYS
-kakao:
-  api:
-    key: "c70330a63c2c9574a93ab5077435c3e4"
-    authUri: "https://kauth.kakao.com/oauth"
-    redirectUri: "http://localhost:8080/oauth/kakao"
-
-
-
 

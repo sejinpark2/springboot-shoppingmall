@@ -1,0 +1,1 @@
+INSERT INTO user_tb (id, email, password, phone_number, roles) VALUES (0, 'admin123@green.com', 'Admin123!', '01012345678', 'ROLE_ADMIN');
