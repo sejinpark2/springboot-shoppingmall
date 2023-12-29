@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>쇼핑몰</title>
+    <style>
+        body {
+            margin-top: 60px;
+        }
+        .button {
+            margin: 5px;
+            width: 150px;
+            height: 50px;
+        }
+        .etc-group {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: lightgray;
+            z-index: 1000;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .header-title {
+            margin-right: auto;
+            margin-left: 20px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .member-group, .product-group, .order-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="etc-group">
+    <button class="header-title" onclick="location.href='http://localhost:8080/'">쇼핑몰</button>
+    <button class="button" id="login-btn" onclick="location.href='login.html'">로그인</button>
+    <button class="button" id="join-btn" onclick="location.href='join.html'">회원가입</button>
+    <button class="button hidden" id="mypage-btn" onclick="location.href='userPage.html'">마이페이지</button>
+    <button class="button hidden" id="adminpage-btn" onclick="location.href='adminPage.html'">관리자 페이지</button>
+    <button class="button hidden" id="logout-btn" onclick="logout()">로그아웃</button>
+</div>
+
+<div class="product-group">
+    <button class="button" onclick="location.href='productRegister.html'">상품 등록</button>
+    <button class="button" onclick="location.href='userProductList.html'">상품 목록</button>
+</div>
+
+<div class="order-group">
+    <button class="button" onclick="location.href='order.html'">상품 주문</button>
+    <button class="button" onclick="location.href='주문내역.html'">주문 내역</button>
+</div>
+
+<script>
+    // 로그인 여부를 확인하는 함수입니다.
+    function checkLoginStatus() {
+        // 쿠키에서 토큰을 가져와서 로그인 여부를 확인합니다.
+        const token = getCookie('jwt');
+        if (token) {
+            const decodedToken = decodeToken(token);
+            if (decodedToken.roles.includes('ROLE_ADMIN')) {
+                document.getElementById('adminpage-btn').classList.remove('hidden');
+            } else {
+                document.getElementById('mypage-btn').classList.remove('hidden');
+            }
+            document.getElementById('logout-btn').classList.remove('hidden');
+            document.getElementById('login-btn').classList.add('hidden');
+            document.getElementById('join-btn').classList.add('hidden');
+        } else {
+            document.getElementById('mypage-btn').classList.add('hidden');
+            document.getElementById('adminpage-btn').classList.add('hidden');
+            document.getElementById('logout-btn').classList.add('hidden');
+            document.getElementById('login-btn').classList.remove('hidden');
+            document.getElementById('join-btn').classList.remove('hidden');
+        }
+    }
+
+    // 로그아웃 버튼 클릭 시 로그아웃 처리를 수행하는 함수입니다.
+    function logout() {
+        deleteCookie('jwt');
+        window.location.href = 'http://localhost:8080/';
+    }
+
+    // 쿠키에서 특정 이름의 쿠키 값을 가져오는 함수입니다.
+    function getCookie(name) {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(name + '=')) {
+                return cookie.substring(name.length + 1);
+            }
+        }
+        return '';
+    }
+
+    // 쿠키를 삭제하는 함수입니다.
+    function deleteCookie(name) {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+
+    // JWT 토큰을 디코딩하여 payload를 반환하는 함수입니다.
+    function decodeToken(token) {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+    }
+
+    window.onload = checkLoginStatus;
+</script>
+</body>
+</html>
+

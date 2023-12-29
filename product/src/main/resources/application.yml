@@ -1,0 +1,42 @@
+server:
+  servlet:
+    encoding:
+      charset: utf-8
+      force: true
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 50MB
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/green?serverTimezone=Asia/Seoul&charactorEncoding=UTF-8
+    username: root
+    password: 1234
+  thymleaf:
+    cache: false
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        hbm2ddl:
+          import_files: classpath:db/data.sql
+        format_sql: true
+      default_batch_fetch_size: 100
+      output:
+        ansi:
+          enabled: always
+  h2:
+    console:
+      enabled: true
+  output:
+    ansi:
+      enabled: ALWAYS
+

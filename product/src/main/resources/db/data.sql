@@ -1,0 +1,1 @@
+INSERT INTO user_tb (id, email, password, address, username, phone_number, roles) VALUES (1, 'admin123@green.com', '{bcrypt}$2a$10$hZ2QMxRqA1A.lKum1R3qwOd4.a6TcFv7kH9oHPljFIrAZq/0pH/Zi', '부산', '관리자', '01012345678', 'ROLE_ADMIN');
