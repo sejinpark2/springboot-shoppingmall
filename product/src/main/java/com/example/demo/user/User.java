@@ -8,11 +8,8 @@ import java.util.List;
 
 
 @Getter
-@Setter
 @NoArgsConstructor
-
 @Entity
-
 @Table(name="user_tb")
 public class User{
 
@@ -22,14 +19,21 @@ public class User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100, nullable = false, unique = true)
+    // 이메일(아이디)
+    @Column(length = 30, nullable = false, unique = true)
     private String email;
 
-    @Column(length = 256, nullable = true)
+    // 비밀번호
     private String password;
 
-    @Column(length = 11)
+    // 이름
+    private String username;
+
+    // 휴대폰 번호
     private String phoneNumber;
+
+    // 주소
+    private String address;
 
     @Column(length = 30)
     @Convert(converter = StringArrayConverter.class)
@@ -38,11 +42,13 @@ public class User{
 
     // * 주로 생성자의 인자가 많거나, 인자를 선택적으로 지정 해야 하는 경우에 사용.
     @Builder
-    public User(Long id, String email, String password, String phoneNumber, List<String> roles) {
+    public User(Long id, String email, String password, String username, String phoneNumber,String address, List<String> roles) {
         this.id = id;
         this.email = email;
         this.password = password;
+        this.username = username;
         this.phoneNumber = phoneNumber;
+        this.address = address;
         this.roles = roles;
     }
 }

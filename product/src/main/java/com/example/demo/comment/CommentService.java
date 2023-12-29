@@ -1,10 +1,10 @@
-package com.example.demo.service;
+package com.example.demo.comment;
 
-import com.example.demo.DTO.CommentDTO;
-import com.example.demo.entity.Board;
-import com.example.demo.entity.Comment;
-import com.example.demo.repository.BoardRepository;
-import com.example.demo.repository.CommentRepository;
+import com.example.demo.comment.CommentDTO;
+import com.example.demo.board.Board;
+import com.example.demo.comment.Comment;
+import com.example.demo.board.BoardRepository;
+import com.example.demo.comment.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,9 +42,9 @@ public class CommentService {
         Board boardEntity = boardRepository.findById(boardId).get();
         java.util.List<Comment> commentEntityList = commentRepository.findAllByBoardOrderByIdDesc(boardEntity);
         /* EntityList -> DTOList */
-        List<com.example.demo.DTO.CommentDTO> commentDTOList = new ArrayList<>();
+        List<CommentDTO> commentDTOList = new ArrayList<>();
         for (Comment commentEntity : commentEntityList) {
-            com.example.demo.DTO.CommentDTO commentDTO = com.example.demo.DTO.CommentDTO.toCommentDTO(commentEntity, boardId);
+            CommentDTO commentDTO = CommentDTO.toCommentDTO(commentEntity, boardId);
             commentDTOList.add(commentDTO);
         }
         return commentDTOList;

@@ -1,7 +1,8 @@
-package com.example.demo.entity;
+package com.example.demo.comment;
 
 
-import com.example.demo.DTO.CommentDTO;
+import com.example.demo.comment.CommentDTO;
+import com.example.demo.board.Board;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

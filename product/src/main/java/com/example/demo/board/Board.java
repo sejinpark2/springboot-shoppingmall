@@ -1,6 +1,8 @@
-package com.example.demo.entity;
+package com.example.demo.board;
 
-import com.example.demo.DTO.BoardDTO;
+import com.example.demo.board.BoardDTO;
+import com.example.demo.boardFile.BoardFile;
+import com.example.demo.comment.Comment;
 import com.example.demo.user.User;
 import lombok.Builder;
 import lombok.Getter;

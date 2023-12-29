@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -94,14 +95,15 @@ public class SecurityConfig {
 
         // 10. 인증, 권한 필터 설정
         http.authorizeRequests(
-                authorize -> authorize.antMatchers("/carts/**", "/options/**", "/orders/**", "/board/save").authenticated()
+                authorize -> authorize.antMatchers("/carts/**", "/options/**", "/orders/**").authenticated()
                         .antMatchers("/admin/**")
-                        .access("hasRole('ADMIN')")
+                        .access("hasRole('USER')")
                         .anyRequest().permitAll()
         );
 
         return http.build();
     }
+
 
     // ** 규칙: 헤더(Authorization), 메서드, IP 주소, 클라이언트으 쿠키 요청을 허용
     public CorsConfigurationSource configurationSource() {

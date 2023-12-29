@@ -1,6 +1,6 @@
-package com.example.demo.DTO;
+package com.example.demo.comment;
 
-import com.example.demo.entity.Comment;
+import com.example.demo.comment.Comment;
 import lombok.*;
 
 @Setter

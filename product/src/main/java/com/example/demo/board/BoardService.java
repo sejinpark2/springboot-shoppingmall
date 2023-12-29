@@ -1,11 +1,12 @@
-package com.example.demo.service;
+package com.example.demo.board;
 
-import com.example.demo.entity.BoardFile;
-import com.example.demo.repository.BoardRepository;
-import com.example.demo.DTO.BoardDTO;
-import com.example.demo.entity.Board;
+import com.example.demo.boardFile.FileRepository;
+import com.example.demo.boardFile.BoardFile;
+import com.example.demo.board.BoardRepository;
+import com.example.demo.board.BoardDTO;
+import com.example.demo.board.Board;
 
-import com.example.demo.repository.FileRepository;
+import com.example.demo.boardFile.FileRepository;
 import com.example.demo.user.User;
 import com.example.demo.user.UserRepository;
 import org.springframework.transaction.annotation.Transactional;

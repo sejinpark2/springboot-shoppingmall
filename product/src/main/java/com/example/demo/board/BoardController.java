@@ -1,11 +1,11 @@
-package com.example.demo.controller;
+package com.example.demo.board;
 
 
 import com.example.demo.core.security.CustomUserDetails;
-import com.example.demo.entity.BoardFile;
-import com.example.demo.repository.FileRepository;
-import com.example.demo.service.BoardService;
-import com.example.demo.DTO.BoardDTO;
+import com.example.demo.boardFile.BoardFile;
+import com.example.demo.boardFile.FileRepository;
+import com.example.demo.board.BoardService;
+import com.example.demo.board.BoardDTO;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

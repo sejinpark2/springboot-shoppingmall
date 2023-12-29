@@ -1,8 +1,12 @@
 package com.example.demo.product;
 
+import com.example.demo.core.security.CustomUserDetails;
 import com.example.demo.core.utils.ApiUtils;
+import com.example.demo.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +20,12 @@ public class ProductController {
 
     @PostMapping("/products/save")
     public ResponseEntity<?> save(@RequestBody @Valid ProductRequest.SaveDTO productDTO) {
-        productService.save(productDTO);
+            productService.save(productDTO);
 
-        return ResponseEntity.ok().build();
+            return ResponseEntity.ok().build();
+
     }
+
 
     // 전체 상품 확인
     @GetMapping("/products")

@@ -1,6 +1,6 @@
-package com.example.demo.DTO;
+package com.example.demo.boardFile;
 
-import com.example.demo.entity.BoardFile;
+import com.example.demo.boardFile.BoardFile;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
